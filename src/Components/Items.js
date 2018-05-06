@@ -5,14 +5,14 @@ class Items extends Component {
     super(props);
     this.state={
       value:'',
-      items:['first',"second", "third"],
-      key:''
+      items:['Wake up',"Go to university", "Go to the gym"],
+      key:'',
+      id:''
     }
     this.handleChange = this.handleChange.bind(this);
     this.itemDelete = this.itemDelete.bind(this);
     this.createItem=this.createItem.bind(this);
     this.keydownHandler=this.keydownHandler.bind(this);
-    // this.showIdItem=this.showIdItem.bind(this);
   }
   handleChange(ev) {
      this.setState({value: ev.target.value});
@@ -25,12 +25,11 @@ class Items extends Component {
  }
  componentDidUpdate(){
    this._updateLocalStorage();
-this.props.onCreateItems(this.state.items.length,this.state.items);
+              this.props.onCreateItems(this.state.items.length,this.state.items);
 }
  componentDidMount(){
 
    document.addEventListener('keydown',this.keydownHandler);
-
    let localItems = JSON.parse(localStorage.getItem('items'));
     if (localItems) {
       this.setState({items:localItems});
@@ -38,16 +37,16 @@ this.props.onCreateItems(this.state.items.length,this.state.items);
  }
   createItem(ev){
     if (this.state.value.replace(/^\s+|\s+$/g, '')!=='') {
-      // console.log(ev.target.value);
       this.state.items.unshift(this.state.value);
       this.setState({value:''});
       this.setState({items:this.state.items});
-        // console.log(this.state.items.length);
+
       }
+      this.props.onCreateItems(this.state.items.length,this.state.items,true);
 
   }
   itemDelete(oldKey){
-    console.log(oldKey);
+  this.props.onDelete(+oldKey);
     let itemId=oldKey;
     let newItems=this.state.items.filter((item, i)=>{
       return i !== +itemId;
@@ -64,11 +63,13 @@ this.props.onCreateItems(this.state.items.length,this.state.items);
             <input className="form-control"  value={this.state.value} onChange={this.handleChange} type="text" placeholder="Default input"/>
         </div><div className="btn"><button type="button" onClick ={this.createItem} className="btn btn-info">Add new</button></div>
         </div>
+
         {
           items.map((el, i)=>{
-            return(<Item key={i} onGetData={this.props.onGetData} onForItem={this.props.onForItem} onShowId={this.showIdItem} onShow={this.props.onShowItem} onItemDelete={this.itemDelete} onNumber={this.props.onNumber}>{el}</Item>)
+            return(<Item key={i} onMach={this.props.onMach} onShowId={this.showIdItem} onShow={this.props.onShowItem} onItemDelete={this.itemDelete}>{el}</Item>)
           })
         }
+
       </div>
     );
   }

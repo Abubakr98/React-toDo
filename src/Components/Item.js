@@ -14,14 +14,12 @@ handleClickDelete(){
 }
 handleClickShow(){
   this.props.onShow(this._reactInternalFiber.key);
-  this.props.onGetData(this.state.items,this._reactInternalFiber.key);
-// console.log(this.props.onForItem(this.state.items));
 }
   render() {
     return (<div key={this.props.keys} className='list-items'>
-      <div className="item-name" onClick={this.handleClickShow} ><h5>{this.props.children}<span className="badge badge-light">{}</span></h5> </div>
-      <div className="btn">
-        <button type="button" onClick={this.handleClickDelete} className="btn btn-outline-danger">Delete</button>
+      <div className="item-name" onClick={this.handleClickShow} ><h5>{this.props.children}<span className="mySpan">{this.props.onMach[this._reactInternalFiber.key]?this.props.onMach[this._reactInternalFiber.key].length:0}</span></h5> </div>
+      <div className="btn myBtn">
+        <button type="button" onClick={this.handleClickDelete} className="btn btn-outline-danger myBtn">Delete</button>
       </div>
     </div>)
   };

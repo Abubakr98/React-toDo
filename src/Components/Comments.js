@@ -6,7 +6,6 @@ class Comments extends Component {
     this.state = {
       value: '',
       items: [],
-      current:{}
     }
     this.handleChange = this.handleChange.bind(this);
     this.createItem = this.createItem.bind(this);
@@ -14,49 +13,35 @@ class Comments extends Component {
   }
   handleChange(ev) {
     this.setState({value: ev.target.value});
-
   }
   keydownHandler(ev) {
     if (ev.keyCode === 13 && ev.ctrlKey) {
       this.createItem(ev);
     }
   }
-
   componentDidMount() {
-
+      this.setState({items:this.props.yourComments});
     document.addEventListener('keydown', this.keydownHandler);
-    let comments = JSON.parse(localStorage.getItem('comments'));
-    if (comments) {
-      this.setState({items: comments});
-    }
-
   }
   createItem(ev) {
     if (this.state.value.replace(/^\s+|\s+$/g, '') !== '') {
       this.state.items.unshift([this.state.value]);
       this.setState({value: ''});
       this.setState({items: this.state.items});
+      this.props.onForComments();
+      }
   }
-}
 
   componentDidUpdate() {
-    let data = this.props.onForItem(this.state.items,this.props.hashteg
-      ? this.props.hashteg
-      : 0);
-      this.state.items=[];
-      console.log(this.state.items=data.sta);
-          console.log(data);
-      // this.setState({items:this.state.items=data.sta});
-
-    this._updateLocalStorage();
+this.state.items=this.props.yourComments;
   }
   render() {
     let {items} = this.state;
     return (<div className="Items">
       <h1>Comments #{
-        this.state.items,this.props.hashteg
+        this.props.hashteg
           ? this.props.hashteg
-          : 0
+          : 1
         }</h1>
       <div className="myForm1">
         <div className="avatar"></div>
@@ -66,16 +51,12 @@ class Comments extends Component {
       </div>
       <div className="allComments">
         {
-          items.map((el, i) => {
-            return (<Comment key={i} onItemDelete={this.itemDelete}>{el}</Comment>)
+        items.map((el, i) => {
+            return (<Comment key={i}>{el}</Comment>)
           })
         }
       </div>
     </div>);
-  }
-  _updateLocalStorage() {
-    let comments = JSON.stringify(this.state.items);
-    localStorage.setItem('comments', comments);
   }
 }
 
