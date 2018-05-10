@@ -58,7 +58,7 @@ Yellow, red, orange and brown!`
     this.forceUpdate();
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let allComments = JSON.parse(localStorage.getItem('allComments'));
     if (allComments) {
       this.setState({comments: allComments});

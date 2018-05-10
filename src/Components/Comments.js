@@ -25,7 +25,7 @@ class Comments extends Component {
   }
   createItem(ev) {
     if (this.state.value.replace(/^\s+|\s+$/g, '') !== '') {
-      this.state.items.unshift([this.state.value]);
+      this.state.items.push([this.state.value]);
       this.setState({value: ''});
       this.setState({items: this.state.items});
       this.props.onForComments();
