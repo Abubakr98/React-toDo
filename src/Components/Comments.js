@@ -38,7 +38,7 @@ this.state.items=this.props.yourComments;
   render() {
     let {items} = this.state;
     return (<div className="Items">
-      <h1>Comments #{
+      <h1>Comment #{
         this.props.hashteg
           ? this.props.hashteg
           : 1
