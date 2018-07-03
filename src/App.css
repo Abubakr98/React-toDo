@@ -1,0 +1,11 @@
+.App{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+body{
+  background-color: rgb(223, 223, 223);
+}

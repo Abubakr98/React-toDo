@@ -1,0 +1,33 @@
+.comments{
+  background-color: #f5f5f5;
+  width: 450px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+}
+.allComments{
+  /* position: relative; */
+  width: 100%;
+  min-height: 400px;
+  max-height: 400px;
+    overflow-x: scroll;
+  }
+.comment{
+  width: 100%;
+  margin-bottom: 10px;
+  height: auto;
+  min-height: 70px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(144, 144, 144, 0.3);
+  display: flex;
+}
+.ico{
+  width: 55px;
+  height: 55px;
+  background-color: #47568c;
+}
+.icoW{
+  margin-right: 10px;
+}

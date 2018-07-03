@@ -1,0 +1,79 @@
+.item {
+  width: 100%;
+  position: relative;
+  height: 65px;
+  /* background-color: rgb(236, 221, 19); */
+  display: flex;
+  align-items: center;
+  color: #333;
+  justify-content: space-between;
+  margin-top: 10px;
+  border-bottom: 1px solid rgba(144, 144, 144, 0.3);
+  border-left: 5px solid #f5f5f5;
+  padding-left: 10px;
+  cursor: pointer;
+}
+.menu-active{
+  border-bottom: 1px solid rgba(144, 144, 144, 0.3);
+  border-left: 5px solid #ff2f5a;
+}
+input{
+  width: 70%;
+  height: 35px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  border: 1px solid silver;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+.add{
+  height: 37px;
+  width: 133px;
+  outline: none;
+  background-color: #27ccc0;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.header{
+  width: 100%;
+  height: 50px;
+  /* background-color: rgb(182, 129, 151); */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.badge{
+  margin-left: 10px;
+}
+.closeMy{
+width: 100px;
+height: 35px;
+border: 2px solid #ff2f5a;
+border-radius: 3px;
+background-color: rgba(80, 57, 242, 0);
+outline: none;
+font-size: 16px;
+color: #ff2f5a;
+}
+.closeMy:hover{
+cursor: pointer;
+background-color: #ff2f5a;
+color: #f7f7f7;
+}
+.tasks{
+  background-color: #f5f5f5;
+  width: 500px;
+  min-height: 550px;
+  max-height: 550px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+}
